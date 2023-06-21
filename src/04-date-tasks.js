@@ -96,6 +96,14 @@ function timeSpanToString(/* startDate, endDate */) {
  */
 function angleBetweenClockHands(/* date */) {
   throw new Error('Not implemented');
+  // const time = new Date(date);
+  // const hours = time.getHours();
+  // const minutes = time.getMinutes();
+  // let result = 0;
+  // let angle = Math.abs(hours * 30 + minutes / 2 - minutes * 6);
+  // angle = Math.min(360 - angle, angle) / 180;
+  // result = angle * Math.PI;
+  // return result;
 }
 
 
