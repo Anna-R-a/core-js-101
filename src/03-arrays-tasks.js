@@ -458,8 +458,9 @@ function sortCitiesArray(/* arr */) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  return [...Array(n)].fill(0).map((elem, ind) => Array(n)
+    .fill(0).map((elem2, ind2) => ((ind === ind2) ? 1 : 0)));
 }
 
 /**
@@ -524,10 +525,22 @@ function distinct(arr) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(/* array, keySelector, valueSelector */) {
-  throw new Error('Not implemented');
+// function group(/* array, keySelector, valueSelector */) {
+//   throw new Error('Not implemented');
+// }
+function group(array, keySelector, valueSelector) {
+  const f = (map, curr) => {
+    const key = keySelector(curr);
+    const value = valueSelector(curr);
+    if (map.has(key)) {
+      map.get(key).push(value);
+    } else {
+      map.set(key, [value]);
+    }
+    return map;
+  };
+  return array.reduce(f, new Map());
 }
-
 
 /**
  * Projects each element of the specified array to a sequence
@@ -559,8 +572,11 @@ function selectMany(arr, childrenSelector) {
  *   ['one','two','three'], [2]       => 'three'  (arr[2])
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
-function getElementByIndexes(/* arr, indexes */) {
-  throw new Error('Not implemented');
+// function getElementByIndexes(/* arr, indexes */) {
+//   throw new Error('Not implemented');
+// }
+function getElementByIndexes(arr, indexes) {
+  return indexes.reduce((prev, curr) => prev[curr], arr);
 }
 
 
